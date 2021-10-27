@@ -5,15 +5,18 @@ public class drawCircle extends JFrame{
 
 	public drawCircle(){
 		setTitle("Draw Circle");
-		setSize(300,300);
+		setSize(600,600);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	//override to make oval into a circle
+	//make oval into a circle
 	public void paint(Graphics g){
 		Graphics2D g2g = (Graphics2D) g;
-		g2g.drawOval(150,150,100,100);
+		g2g.drawOval(200,200,200,200); //drawOval is a Java method in Graphics. 
+		// the parameters pass are drawOval(int x, int y, int width, int height)
+		// by changing the number in parameters we can control the size of the circle
+		// the source to understand drawOval(): https://chortle.ccsu.edu/java5/notes/chap36/ch36_5.html
 	}
 	
 	public static void main(String[] args) {
