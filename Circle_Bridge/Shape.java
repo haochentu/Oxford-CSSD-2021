@@ -1,5 +1,6 @@
 // abstract shape class with a reference to color interface
 
+package design.bridge; 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
