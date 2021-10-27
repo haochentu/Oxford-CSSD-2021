@@ -1,5 +1,6 @@
 //circle class 
 
+package design.bridge; 
 public circle extends Shape{
 	/**public drawCircle(){
 		setTitle("Draw Circle");
