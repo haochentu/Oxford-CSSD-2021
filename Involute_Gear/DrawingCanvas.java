@@ -17,6 +17,7 @@ public class DrawingCanvas extends JComponent {
 	int arcAngle; 
 	int cx;
 	int cy;
+	double arcLength; 
 	
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
@@ -42,7 +43,7 @@ public class DrawingCanvas extends JComponent {
 		g2d.setColor(Color.GRAY);
 		g2d.fill(e2);
 		
-		t = 1; 
+		t = 80; 
 		double rad = Math.toRadians(t); 
 		System.out.println("rad is " + rad); 
 		double sinValue = Math.sin(rad);
@@ -50,23 +51,34 @@ public class DrawingCanvas extends JComponent {
 		double cosValue = Math.cos(rad); 
 		System.out.println("cos is " + cosValue); 
 		
-		double dWidth = r*(cosValue + (t*sinValue));
-		System.out.println("t*sinValue is " + t*sinValue);
+		double dWidth = r*(cosValue + (rad*sinValue));
 		System.out.println("double width is " + dWidth); 
 		
-		double dHeight = r*(sinValue - (t*cosValue));
+		double dHeight = r*(sinValue - (rad*cosValue));
 		width = (int)dWidth; 
-		height = -(int)dHeight; 
+		height = (int)dHeight; 
 		System.out.println("width is " + width);
 		System.out.println("height is " + height);
 		
-		arcAngle = (r/2) * t * t; 
+		arcLength = (r/2) * rad * rad;
+		System.out.println("arcLength is " + arcLength); 
 		
-		cx = 120;
-		cy = 110;
+		arcAngle = (int) Math.toDegrees(arcLength/r);  
+		System.out.println("arcAngle is " + arcAngle); 
+		
+		//cx = 120;
+		// cy = 110;
+		cx = (int) (400 + (r* (Math.cos(2.093)))); 
+		cy = (int) (400 - (r* (Math.sin(2.093)))); 
+		System.out.println("cx is " + cx + " and cy is " + cy);
 		
 		g.setColor(Color.RED);
-		g.drawArc(cx,cy, width,height,0,arcAngle); 
+		g.drawArc(cx,cy, width,height,0,180); 
+		
+		//Path2D.Double curve = new Path2D.Double();
+		//curve.moveTo(cx,cy);
+		//curve.curveTo(200,200,300,350,500,100);
+		//g2d.draw(curve);
 		
 		
 		
