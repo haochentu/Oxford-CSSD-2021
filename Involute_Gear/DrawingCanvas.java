@@ -47,31 +47,20 @@ public class DrawingCanvas extends JComponent {
 		g2d.fill(e2);
 		
 		t = 80; 
-		double rad = Math.toRadians(t); 
-		System.out.println("rad is " + rad); 
+		double rad = Math.toRadians(t);  
 		double sinValue = Math.sin(rad);
-		System.out.println("sin is " + sinValue);
 		double cosValue = Math.cos(rad); 
-		System.out.println("cos is " + cosValue); 
-		
+	
 		double dWidth = r*(cosValue + (rad*sinValue));
-		System.out.println("double width is " + dWidth); 
-		
 		double dHeight = r*(sinValue - (rad*cosValue));
 		width = (int)dWidth; 
 		height = (int)dHeight; 
-		System.out.println("width is " + width);
-		System.out.println("height is " + height);
 		
-		arcLength = (r/2) * rad * rad;
-		System.out.println("arcLength is " + arcLength); 
-		
+		arcLength = (r/2) * rad * rad; 
 		arcAngle = (int) Math.toDegrees(arcLength/r);  
-		System.out.println("arcAngle is " + arcAngle); 
-		
+
 		//cx = (int) (400 + (r* (Math.cos(2.093)))); 
 		//cy = (int) (400 - (r* (Math.sin(2.093)))); 
-		System.out.println("cx is " + cx + " and cy is " + cy);
 		
 		g.setColor(Color.RED); 
 		
@@ -85,13 +74,21 @@ public class DrawingCanvas extends JComponent {
 
 			g2d.drawArc(cx , cy , width, height, -77, -20);
 			}
+		
+		g2d.rotate(Math.toRadians(175), 400, 400); 
+		
+		g2d.drawArc(cx -50,cy -130, width, height, 44, 27); 
+		
+		for (int i = 0; i < 5; i++) {
+			g2d.rotate(Math.toRadians(60), 400, 400); 
 
+			g2d.drawArc(cx -50,cy -130, width, height, 44, 27);
+			}
 		
-		//g.drawArc(cx, cy + 200, width, height, 0, -180);
-		
+
 		Ellipse2D.Double e3 = new Ellipse2D.Double(xCenter-r, yCenter-r, 2*r, 2*r);
 		g2d.setColor(Color.GRAY);
-		//g2d.fill(e3);
+		g2d.fill(e3);
 	}
 	
 }
