@@ -1,13 +1,21 @@
-import java.awt.*;  //for color and Graphis 
+import java.awt.*;  //for color and Graphics
 import java.awt.geom.*;  //for create shapes and paths 
 import javax.swing.*;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
 
 public class DrawingCanvas extends JComponent {
-	public DrawingCanvas() {
-		
+	private Circle c1;
+	private Circle c2;
+	
+	public DrawingCanvas(int w, int h) {   
+		width = w;
+		height = h;
+		c1 = new Circle(400,400,240,Color.YELLOW);     //call Circle class
+		c2 = new Circle(400,400,200,Color.BLUE);
 	}
 	
 	int xCenter;
@@ -22,6 +30,7 @@ public class DrawingCanvas extends JComponent {
 	int cy;
 	double arcLength; 
 	
+	
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 				
@@ -30,21 +39,12 @@ public class DrawingCanvas extends JComponent {
 			RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setRenderingHints(rh);
 		
-		xCenter = 400;
-		yCenter = 400;
-		r = 240;
-		
-		Ellipse2D.Double e = new Ellipse2D.Double(xCenter-r, yCenter-r, 2*r, 2*r);
-		g2d.setColor(Color.YELLOW);
-		g2d.fill(e);
+		c1.drawCircle(g2d);      //call drawCircle method
+		c2.drawCircle(g2d);
 		
 		xCenter = 400;
 		yCenter = 400;
 		r = 200;
-		
-		Ellipse2D.Double e2 = new Ellipse2D.Double(xCenter-r, yCenter-r, 2*r, 2*r);
-		g2d.setColor(Color.GRAY);
-		g2d.fill(e2);
 		
 		t = 80; 
 		double rad = Math.toRadians(t);  
@@ -69,26 +69,21 @@ public class DrawingCanvas extends JComponent {
 		
 		g2d.drawArc(cx ,cy, width, height, -77, -20); 
 		
-		for (int i = 0; i < 5; i++) {
-			g2d.rotate(Math.toRadians(60), 400, 400); 
+		for (int i = 0; i < 11; i++) {
+			g2d.rotate(Math.toRadians(30), 400, 400); 
 
 			g2d.drawArc(cx , cy , width, height, -77, -20);
 			}
 		
-		g2d.rotate(Math.toRadians(175), 400, 400); 
+		g2d.rotate
+		(Math.toRadians(175), 400, 400); 
 		
-		g2d.drawArc(cx -50,cy -130, width, height, 44, 27); 
+		g2d.drawArc(cx -50,cy -120, width, height, 41, 27); 
 		
-		for (int i = 0; i < 5; i++) {
-			g2d.rotate(Math.toRadians(60), 400, 400); 
+		for (int i = 0; i < 11; i++) {
+			g2d.rotate(Math.toRadians(30), 400, 400); 
 
-			g2d.drawArc(cx -50,cy -130, width, height, 44, 27);
+			g2d.drawArc(cx -50,cy -120, width, height, 41, 27);
 			}
-		
-
-		Ellipse2D.Double e3 = new Ellipse2D.Double(xCenter-r, yCenter-r, 2*r, 2*r);
-		g2d.setColor(Color.GRAY);
-		g2d.fill(e3);
 	}
-	
 }
