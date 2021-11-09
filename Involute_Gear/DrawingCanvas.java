@@ -37,15 +37,16 @@ public class DrawingCanvas extends JComponent {
 		double y1; 
 		double x2 = 0; 
 		double y2 = 0; 	
+		int teethNumber = 6; 
 		
 		g2d.setColor(Color.BLUE);
 		
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < teethNumber; i++) {
 			
 			for (int i1 = 0; i1 < 50; i1++) {
 				double rad = Math.toRadians(t);  
-				double sinValue = Math.sin(rad);
-				double cosValue = Math.cos(rad); 
+				double sinValue = Math.sin(t);
+				double cosValue = Math.cos(t); 
 				
 				if (x2 == 0) {
 					x1 = r*(cosValue + (rad*sinValue));
@@ -61,29 +62,27 @@ public class DrawingCanvas extends JComponent {
 					y1 = y2; 
 				}
 				
-				//x1 = r*(cosValue + (rad*sinValue));
 				System.out.println("x1 is " + x1); 
-				
-				//y1 = r*(sinValue - (rad*cosValue));
-				//y1 = r + y1; 
 				
 				System.out.println("y1 is " + y1); 
 				t += 1; 
 				
+				rad = Math.toRadians(t);  
+				sinValue = Math.sin(rad);
+				cosValue = Math.cos(rad); 
+				
 				x2 = r*(cosValue + (rad*sinValue));
 				System.out.println("x2 is " + x2); 
-				y2 = r*(sinValue - (rad*cosValue));
-				//double y0 = y2+r - y1; 
-				//y2 = y1 - y0; 
+				y2 = r*(sinValue - (rad*cosValue)); 
 				y2 = r + y2;
 				System.out.println("y2 is " + y2); 
 				
 				g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);
 				}
-
+			x2 = 0;
+			y2 = 0;
 			t = 0; 
-			g2d.rotate(Math.toRadians(360/6), 400, 400);
+			g2d.rotate(Math.toRadians(360/teethNumber), 400, 400);
 		}
 	}
 }
-
