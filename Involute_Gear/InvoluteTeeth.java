@@ -63,9 +63,7 @@ public class InvoluteTeeth {
 				x2 = r*(cosValue + (rad*sinValue));
 				x2 = r + x2; 
 				y2 = r*(sinValue - (rad*cosValue)); 
-				System.out.println("y2 is " + y2); 
 				y2 = r - y2;
-				System.out.println("y1 is " + y1 + "; r-y2 is " + y2); 
 				
 				if (t == 1) {
 					g2d.rotate(Math.toRadians(-90), (int)xx, (int)yy); 
@@ -138,22 +136,8 @@ public class InvoluteTeeth {
 				g2d.translate(0, -yy);	
 			}
 			
-			//System.out.println("x1 is " + x1 + "; x2 is " + x2); 
-			//System.out.println("y1 is " + y1 + "; r-y2 is " + y2);  
 			//g2d.rotate(Math.toRadians(30), 400, 400);
-			g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);	
-			
-			//rec = g2d.getClipBounds(); 
-			
-			//AffineTransform at = new AffineTransform();
-			//at.translate(g2d,0);
-			
-			/**try {
-			g2d.fill(mirrorAlongX(g2d.getClipBounds().getCenterX(), g2d)); 
-			}
-			catch (Exception e) {
-				System.out.println("Exception found"); 
-			}*/		
+			//g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);	
 			
 		}
 		
