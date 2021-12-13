@@ -69,19 +69,7 @@ public class InvoluteTeeth {
 					g2d.rotate(Math.toRadians(-90), (int)xx, (int)yy); 
 				}
 						
-				g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);	
-				
-				//rec = g2d.getClipBounds(); 
-				
-				//AffineTransform at = new AffineTransform();
-				//at.translate(g2d,0);
-				
-				/**try {
-				g2d.fill(mirrorAlongX(g2d.getClipBounds().getCenterX(), g2d)); 
-				}
-				catch (Exception e) {
-					System.out.println("Exception found"); 
-				}*/		
+				g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);		
 				
 			}
 			
@@ -94,6 +82,8 @@ public class InvoluteTeeth {
 		}
 	
 	g2d.setColor(Color.black);
+	
+	g2d.rotate(Math.toRadians(60/teethNumber), 400, 400);
 		
 	for (int i = 0; i < teethNumber; i++) {
 		
@@ -103,15 +93,15 @@ public class InvoluteTeeth {
 			double cosValue = Math.cos(t); 
 			
 			if (x2 == 0) {
-				x1 = r*(cosValue + (rad*sinValue));
-				x1 = r + x1; 
+				x1 = -(r*(cosValue + (rad*sinValue)));
+				x1 = r - x1; 
 				xx = x1; 
 			} else {
 				x1 = x2; 
 			}
 			
 			if (y2 == 0) {
-				y1 = r*(sinValue - (rad*cosValue));
+				y1 = -(r*(sinValue - (rad*cosValue)));
 				y1 = r + y1;
 				yy = y1; 
 			} else {
@@ -124,20 +114,20 @@ public class InvoluteTeeth {
 			sinValue = Math.sin(rad);
 			cosValue = Math.cos(rad); 
 			
-			x2 = r*(cosValue + (rad*sinValue));
-			x2 = r + x2; 
-			y2 = r*(sinValue - (rad*cosValue)); 
+			x2 = -(r*(cosValue + (rad*sinValue)));
+			x2 = r - x2; 
+			y2 = -(r*(sinValue - (rad*cosValue))); 
 			y2 = r - y2;
 			
 			if (t == 1) {
 				g2d.rotate(Math.toRadians(-90), (int)xx, (int)yy); 
-				g2d.translate(0,yy); 
-				g2d.scale(1,-1); 
-				g2d.translate(0, -yy);	
+				//g2d.translate(0,yy); 
+				//g2d.scale(1,-1); 
+				//g2d.translate(0, -yy);	
 			}
 			
 			//g2d.rotate(Math.toRadians(30), 400, 400);
-			//g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);	
+			g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);	
 			
 		}
 		
@@ -148,4 +138,6 @@ public class InvoluteTeeth {
 		g2d.rotate(Math.toRadians(90), (int)xx, (int)yy);
 		g2d.rotate(Math.toRadians(360/teethNumber), 400, 400);
 	}
+}
+
 }
