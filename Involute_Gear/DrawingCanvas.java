@@ -10,11 +10,12 @@ public class DrawingCanvas extends JComponent {
 	private Circle c2;
 	private InvoluteTeeth it1; 
 	
-	public DrawingCanvas(int w, int h, int r) {   
-		c1 = new Circle(400, 400, 265, Color.PINK);   //call Circle class
-		c2 = new Circle(400, 400, r, Color.YELLOW);
+	public DrawingCanvas(int w, int h, int r, int teethNumber, int circleDiameter) { 
 		
-		it1 = new InvoluteTeeth(200, 0,0,0, 0, 0,0,0, 6, Color.BLUE); //call InvoluteTeeth class, 
+		c1 = new Circle(circleDiameter, circleDiameter, 265, Color.PINK);   //call Circle class
+		c2 = new Circle(circleDiameter, circleDiameter, r, Color.YELLOW);
+		
+		it1 = new InvoluteTeeth(r, 0,0,0, 0, 0,0,0, teethNumber, Color.BLUE); //call InvoluteTeeth class, 
 	    //here user can define the number of teeth they want, the maximum is 12 within the setting here. 
 	}
 	
