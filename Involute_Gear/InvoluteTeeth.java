@@ -17,7 +17,7 @@ public class InvoluteTeeth {
 	public InvoluteTeeth(int r, int t, double x1, double y1, double x2, double y2, double xx, double yy, int teethNumber, Color color) {
 		this.r = r;
 		this.t = t;
-		this.x1 = x1;
+		this.x1 = x1; 
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2; 
@@ -26,6 +26,14 @@ public class InvoluteTeeth {
 		this.teethNumber = teethNumber; 
 		this.color = color; 
 	}	
+	
+	public double xEquation(int r, double rad, double cosValue, double sinValue) {
+		return r*(cosValue + (rad*sinValue)); 
+	}
+	
+	public double yEquation(int r, double rad, double cosValue, double sinValue) {
+		return r*(sinValue - (rad*cosValue)); 
+	}
 	
 	protected void drawInvoluteTeeth(Graphics2D g2d) {
 		
@@ -39,7 +47,7 @@ public class InvoluteTeeth {
 				double cosValue = Math.cos(t); 
 				
 				if (x2 == 0) {
-					x1 = r*(cosValue + (rad*sinValue));
+					x1 = xEquation(r, rad, cosValue, sinValue); 
 					x1 = r + x1; 
 					xx = x1; 
 				} else {
@@ -47,7 +55,7 @@ public class InvoluteTeeth {
 				}
 				
 				if (y2 == 0) {
-					y1 = r*(sinValue - (rad*cosValue));
+					y1 = yEquation(r, rad, cosValue, sinValue); 
 					y1 = r + y1;
 					yy = y1; 
 				} else {
@@ -60,9 +68,9 @@ public class InvoluteTeeth {
 				sinValue = Math.sin(rad);
 				cosValue = Math.cos(rad); 
 				
-				x2 = r*(cosValue + (rad*sinValue));
+				x2 = xEquation(r, rad, cosValue, sinValue); 
 				x2 = r + x2; 
-				y2 = r*(sinValue - (rad*cosValue)); 
+				y2 = yEquation(r, rad, cosValue, sinValue); 
 				y2 = r - y2;
 				
 				if (t == 1) {
@@ -81,8 +89,6 @@ public class InvoluteTeeth {
 			g2d.rotate(Math.toRadians(360/teethNumber), 400, 400);
 		}
 	
-	g2d.setColor(Color.black);
-	
 	g2d.rotate(Math.toRadians(60/teethNumber), 400, 400);
 		
 	for (int i = 0; i < teethNumber; i++) {
@@ -93,7 +99,7 @@ public class InvoluteTeeth {
 			double cosValue = Math.cos(t); 
 			
 			if (x2 == 0) {
-				x1 = -(r*(cosValue + (rad*sinValue)));
+				x1 = -xEquation(r, rad, cosValue, sinValue); 
 				x1 = r - x1; 
 				xx = x1; 
 			} else {
@@ -101,7 +107,7 @@ public class InvoluteTeeth {
 			}
 			
 			if (y2 == 0) {
-				y1 = -(r*(sinValue - (rad*cosValue)));
+				y1 = -yEquation(r, rad, cosValue, sinValue); 
 				y1 = r + y1;
 				yy = y1; 
 			} else {
@@ -114,20 +120,15 @@ public class InvoluteTeeth {
 			sinValue = Math.sin(rad);
 			cosValue = Math.cos(rad); 
 			
-			x2 = -(r*(cosValue + (rad*sinValue)));
+			x2 = -xEquation(r, rad, cosValue, sinValue); 
 			x2 = r - x2; 
-			y2 = -(r*(sinValue - (rad*cosValue))); 
+			y2 = -yEquation(r, rad, cosValue, sinValue); 
 			y2 = r - y2;
 			
 			if (t == 1) {
-				g2d.rotate(Math.toRadians(-90), (int)xx, (int)yy); 
-				//g2d.translate(0,yy); 
-				//g2d.scale(1,-1); 
-				//g2d.translate(0, -yy);	
+				g2d.rotate(Math.toRadians(-90), (int)xx, (int)yy); 	
 			}
-			
-			//g2d.rotate(Math.toRadians(30), 400, 400);
-			g2d.drawLine((int)x1,(int)y1,(int)x2,(int)y2);	
+			g2d.drawLine((int) x1,(int)y1,(int)x2,(int)y2);	
 			
 		}
 		
